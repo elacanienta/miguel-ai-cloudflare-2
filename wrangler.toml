@@ -1,5 +1,6 @@
 name = "miguel-ai-cloudflare"
 compatibility_date = "2025-12-18"
+compatibility_flags = ["nodejs_compat"]
 
 # Environment variables (set these in Cloudflare dashboard or using wrangler secret)
 # GROQ_API_KEY
