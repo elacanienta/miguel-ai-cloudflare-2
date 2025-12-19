@@ -11,7 +11,7 @@ export default function Home() {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [currentVideo, setCurrentVideo] = useState(null);
-  const [selectedModel, setSelectedModel] = useState('groq'); // ADD THIS
+  const [selectedModel, setSelectedModel] = useState('gemini');
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {

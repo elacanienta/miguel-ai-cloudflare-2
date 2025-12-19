@@ -1,5 +1,4 @@
 export interface Env {
-  GROQ_API_KEY: string;
   GEMINI_API_KEY: string;
   MISTRAL_API_KEY: string;
 }
@@ -97,42 +96,6 @@ export default {
     }
   },
 };
-
-async function handleGroq(message: string, env: Env): Promise<Response> {
-  if (!env.GROQ_API_KEY) {
-    return new Response(JSON.stringify({ error: 'Groq API key not configured' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
-  }
-
-  const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${env.GROQ_API_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'llama-3.3-70b-versatile',
-      messages: [
-        { role: 'system', content: getSystemPrompt() },
-        { role: 'user', content: message }
-      ],
-      temperature: 0.7,
-      max_tokens: 200,
-    }),
-  });
-
-  const data = await response.json() as any;
-
-  if (!response.ok) {
-    throw new Error(data.error?.message || 'Groq API request failed');
-  }
-
-  return new Response(JSON.stringify({ message: data.choices[0].message.content }), {
-    headers: { 'Content-Type': 'application/json' },
-  });
-}
 
 async function handleGemini(message: string, env: Env): Promise<Response> {
   if (!env.GEMINI_API_KEY) {

@@ -18,12 +18,6 @@ export default function ModelSelector({ selectedModel, onModelChange }) {
 
   const models = [
     {
-      id: 'groq',
-      name: 'Llama 3.3 70B',
-      provider: 'Groq',
-      description: 'Fast and efficient'
-    },
-    {
       id: 'gemini',
       name: 'Gemma 3 27B',
       provider: 'Google',
