@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import LoadingIndicator from './LoadingIndicator';
 
 export default function Avatar({ isSpeaking, videoToPlay, onVideoEnd }) {
   const videoRef = useRef(null);
@@ -10,6 +11,9 @@ export default function Avatar({ isSpeaking, videoToPlay, onVideoEnd }) {
   const [introPlayed, setIntroPlayed] = useState(false);
   const [showIntro, setShowIntro] = useState(false);
   const [isIdle, setIsIdle] = useState(true);
+  const [isIdleLoading, setIsIdleLoading] = useState(true);
+  const [isIntroLoading, setIsIntroLoading] = useState(false);
+  const [isContentLoading, setIsContentLoading] = useState(false);
 
   useEffect(() => {
     if (idleVideoRef.current) {
@@ -29,6 +33,7 @@ export default function Avatar({ isSpeaking, videoToPlay, onVideoEnd }) {
   const playIntro = () => {
     setShowIntro(true);
     setIsIdle(false);
+    setIsIntroLoading(true);
     if (idleVideoRef.current) {
       idleVideoRef.current.pause();
     }
@@ -40,6 +45,7 @@ export default function Avatar({ isSpeaking, videoToPlay, onVideoEnd }) {
 
   useEffect(() => {
     if (videoToPlay && videoRef.current) {
+      setIsContentLoading(true);
       setIsPlayingVideo(true);
       setIsIdle(false);
       if (idleVideoRef.current) {
@@ -83,6 +89,8 @@ export default function Avatar({ isSpeaking, videoToPlay, onVideoEnd }) {
         ref={introVideoRef}
         className={`w-full h-full object-contain transition-opacity duration-500 ${showIntro ? 'opacity-100' : 'opacity-0'}`}
         onEnded={handleIntroEnd}
+        onCanPlay={() => setIsIntroLoading(false)}
+        onLoadedData={() => setIsIntroLoading(false)}
         playsInline
         disablePictureInPicture
         controlsList="nodownload nofullscreen noremoteplayback"
@@ -98,6 +106,8 @@ export default function Avatar({ isSpeaking, videoToPlay, onVideoEnd }) {
         loop
         muted
         playsInline
+        onCanPlay={() => setIsIdleLoading(false)}
+        onLoadedData={() => setIsIdleLoading(false)}
         disablePictureInPicture
         controlsList="nodownload nofullscreen noremoteplayback"
         style={{ pointerEvents: 'none', display: !showIntro ? 'block' : 'none' }}
@@ -111,12 +121,19 @@ export default function Avatar({ isSpeaking, videoToPlay, onVideoEnd }) {
           ref={videoRef}
           className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${isPlayingVideo ? 'opacity-100' : 'opacity-0'}`}
           onEnded={handleVideoEnd}
+          onCanPlay={() => setIsContentLoading(false)}
+          onLoadedData={() => setIsContentLoading(false)}
           playsInline
           disablePictureInPicture
           controlsList="nodownload nofullscreen noremoteplayback"
           style={{ pointerEvents: 'none' }}
         />
       )}
+
+      {/* Loading Indicators */}
+      {isIdleLoading && !showIntro && !isPlayingVideo && <LoadingIndicator message="Loading" />}
+      {isIntroLoading && showIntro && <LoadingIndicator message="Loading video" />}
+      {isContentLoading && isPlayingVideo && <LoadingIndicator message="Loading video" />}
     </div>
   );
 }
