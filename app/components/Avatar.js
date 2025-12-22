@@ -52,8 +52,12 @@ export default function Avatar({ isSpeaking, videoToPlay, onVideoEnd }) {
       setIsContentLoading(true);
       setIsPlayingVideo(true);
       setIsIdle(false);
+      setShowIntro(false); // Hide intro video
       if (idleVideoRef.current) {
         idleVideoRef.current.pause();
+      }
+      if (introVideoRef.current) {
+        introVideoRef.current.pause(); // Stop intro video if playing
       }
       videoRef.current.src = videoToPlay;
       videoRef.current.currentTime = 0;
