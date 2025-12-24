@@ -23,7 +23,7 @@ const deployments = [
   },
   {
     name: 'Cloudflare',
-    url: 'https://miguel-ai-2.pages.dev/',
+    url: 'https://miguel-ai.pages.dev/',
     color: 'bg-orange-500',
     textColor: 'text-orange-600'
   }
