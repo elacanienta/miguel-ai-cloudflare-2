@@ -13,6 +13,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [currentVideo, setCurrentVideo] = useState(null);
   const [selectedModel, setSelectedModel] = useState('mistral');
+  const [isAltAvatar, setIsAltAvatar] = useState(false);
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -91,11 +92,16 @@ export default function Home() {
   };
   
   const playVideo = (videoName) => {
-    setCurrentVideo(`/${videoName}.mp4`);
+    const suffix = isAltAvatar ? 'ALT' : '';
+    setCurrentVideo(`/${videoName}${suffix}.mp4`);
   };
   
   const handleVideoEnd = () => {
     setCurrentVideo(null);
+  };
+
+  const handleAvatarSwitch = () => {
+    setIsAltAvatar(prev => !prev);
   };
 
   const quickPrompts = [
@@ -129,10 +135,12 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-6 items-center">
             <div className="md:col-span-1">
               <div className="aspect-[2/3] rounded-xl overflow-hidden">
-                <Avatar 
-                  isSpeaking={isLoading} 
+                <Avatar
+                  isSpeaking={isLoading}
                   videoToPlay={currentVideo}
                   onVideoEnd={handleVideoEnd}
+                  isAltAvatar={isAltAvatar}
+                  onAvatarSwitch={handleAvatarSwitch}
                 />
               </div>
             </div>
