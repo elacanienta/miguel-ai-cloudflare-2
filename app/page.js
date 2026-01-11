@@ -6,6 +6,7 @@ import QRCode from './components/QRCode';
 import ModelSelector from './components/ModelSelector';
 import DeploymentSelector from './components/DeploymentSelector';
 import ReactMarkdown from 'react-markdown';
+import { getVideoPath } from '@/lib/assets';
 
 export default function Home() {
   const [messages, setMessages] = useState([]);
@@ -13,6 +14,8 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [currentVideo, setCurrentVideo] = useState(null);
   const [selectedModel, setSelectedModel] = useState('mistral');
+  const [isAltAvatar, setIsAltAvatar] = useState(false);
+  const [language, setLanguage] = useState('english'); // 'english' or 'german'
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -91,11 +94,19 @@ export default function Home() {
   };
   
   const playVideo = (videoName) => {
-    setCurrentVideo(`/${videoName}.mp4`);
+    setCurrentVideo(getVideoPath(videoName, { isReal: isAltAvatar, language }));
   };
-  
+
   const handleVideoEnd = () => {
     setCurrentVideo(null);
+  };
+
+  const handleAvatarSwitch = () => {
+    setIsAltAvatar(prev => !prev);
+  };
+
+  const handleLanguageToggle = () => {
+    setLanguage(language === 'english' ? 'german' : 'english');
   };
 
   const quickPrompts = [
@@ -110,12 +121,12 @@ export default function Home() {
       {/* Top Bar - Light Gemini Style */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
         <div className="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          <a href="https://miguel-app.pages.dev/" className="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer">
             <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold text-sm">
               M
             </div>
             <span className="text-lg font-medium text-gray-800">MiguelAI</span>
-          </div>
+          </a>
           <DeploymentSelector />
         </div>
       </header>
@@ -129,10 +140,14 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-6 items-center">
             <div className="md:col-span-1">
               <div className="aspect-[2/3] rounded-xl overflow-hidden">
-                <Avatar 
-                  isSpeaking={isLoading} 
+                <Avatar
+                  isSpeaking={isLoading}
                   videoToPlay={currentVideo}
                   onVideoEnd={handleVideoEnd}
+                  isAltAvatar={isAltAvatar}
+                  onAvatarSwitch={handleAvatarSwitch}
+                  language={language}
+                  onLanguageToggle={handleLanguageToggle}
                 />
               </div>
             </div>
@@ -140,28 +155,28 @@ export default function Home() {
               <h2 className="text-2xl font-semibold text-gray-900">Miguel Lacanienta</h2>
               <p className="text-gray-600">BS Computer Science • AI Specialization • Mapúa University</p>
               <div className="flex flex-wrap gap-2">
-                <button 
-                  onClick={() => playVideo('Objective')}
+                <button
+                  onClick={() => playVideo('objective')}
                   className="px-4 py-2 rounded-full bg-blue-50 text-blue-700 text-sm font-medium border border-blue-200 hover:bg-blue-100 hover:border-blue-300 transition-all duration-200 cursor-pointer">
                   Objective
                 </button>
                 <button
-                  onClick={() => playVideo('Skills')}
+                  onClick={() => playVideo('skills')}
                   className="px-4 py-2 rounded-full bg-purple-50 text-purple-700 text-sm font-medium border border-purple-200 hover:bg-purple-100 hover:border-purple-300 transition-all duration-200 cursor-pointer">
                   Skills
                 </button>
                 <button
-                  onClick={() => playVideo('Certifications')}
+                  onClick={() => playVideo('certs')}
                   className="px-4 py-2 rounded-full bg-green-50 text-green-700 text-sm font-medium border border-green-200 hover:bg-green-100 hover:border-green-300 transition-all duration-200 cursor-pointer">
                   Certifications
                 </button>
                 <button
-                  onClick={() => playVideo('AppliedSkills')}
+                  onClick={() => playVideo('applied')}
                   className="px-4 py-2 rounded-full bg-orange-50 text-orange-700 text-sm font-medium border border-orange-200 hover:bg-orange-100 hover:border-orange-300 transition-all duration-200 cursor-pointer">
                   Applied Skills
                 </button>
                 <button
-                  onClick={() => playVideo('Projects')}
+                  onClick={() => playVideo('projects')}
                   className="px-4 py-2 rounded-full bg-pink-50 text-pink-700 text-sm font-medium border border-pink-200 hover:bg-pink-100 hover:border-pink-300 transition-all duration-200 cursor-pointer">
                   Projects
                 </button>
