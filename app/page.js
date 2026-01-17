@@ -197,63 +197,6 @@ export default function Home() {
                       {/* First complete set */}
                       <div className="flex items-center gap-3 flex-shrink-0 pr-3">
                         <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/chatgpt_icon.png" alt="ChatGPT" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">ChatGPT</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/claude_icon.png" alt="Claude" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">Claude</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/llama_icon.png" alt="Llama 3.3" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">Llama 3.3</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/gemma_icon.png" alt="Gemma 3" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">Gemma 3</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/mistral_icon.png" alt="Mistral Large" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">Mistral Large</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/elevenlabs_icon.png" alt="ElevenLabs" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">ElevenLabs</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/sora_icon.png" alt="Sora 2" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">Sora 2</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/capcut_icon.png" alt="CapCut" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">CapCut</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/pippit_icon.png" alt="Pippit" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">Pippit</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/github_icon.png" alt="GitHub" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">GitHub</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/vercel_icon.png" alt="Vercel" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">Vercel</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/netlify_icon.png" alt="Netlify" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">Netlify</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/render_icon.png" alt="Render" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">Render</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/cloudflare_icon.png" alt="Cloudflare" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">Cloudflare</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/kiro_icon.png" alt="Kiro" className="w-3.5 h-3.5 flex-shrink-0" />
                           <img src={`${ASSET_CONFIG.basePath}/chatgpt_icon.png`} alt="ChatGPT" className="w-3.5 h-3.5 flex-shrink-0" />
                           <span className="text-white text-xs font-medium whitespace-nowrap">ChatGPT</span>
                         </div>
@@ -317,63 +260,6 @@ export default function Home() {
                       {/* Duplicate set for seamless loop */}
                       <div className="flex items-center gap-3 flex-shrink-0 pr-3">
                         <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/chatgpt_icon.png" alt="ChatGPT" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">ChatGPT</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/claude_icon.png" alt="Claude" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">Claude</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/llama_icon.png" alt="Llama 3.3" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">Llama 3.3</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/gemma_icon.png" alt="Gemma 3" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">Gemma 3</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/mistral_icon.png" alt="Mistral Large" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">Mistral Large</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/elevenlabs_icon.png" alt="ElevenLabs" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">ElevenLabs</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/sora_icon.png" alt="Sora 2" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">Sora 2</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/capcut_icon.png" alt="CapCut" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">CapCut</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/pippit_icon.png" alt="Pippit" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">Pippit</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/github_icon.png" alt="GitHub" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">GitHub</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/vercel_icon.png" alt="Vercel" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">Vercel</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/netlify_icon.png" alt="Netlify" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">Netlify</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/render_icon.png" alt="Render" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">Render</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/cloudflare_icon.png" alt="Cloudflare" className="w-3.5 h-3.5 flex-shrink-0" />
-                          <span className="text-white text-xs font-medium whitespace-nowrap">Cloudflare</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
-                          <img src="/kiro_icon.png" alt="Kiro" className="w-3.5 h-3.5 flex-shrink-0" />
                           <img src={`${ASSET_CONFIG.basePath}/chatgpt_icon.png`} alt="ChatGPT" className="w-3.5 h-3.5 flex-shrink-0" />
                           <span className="text-white text-xs font-medium whitespace-nowrap">ChatGPT</span>
                         </div>
