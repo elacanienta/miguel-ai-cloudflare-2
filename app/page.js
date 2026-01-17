@@ -117,7 +117,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F0F4F8] text-[#1f1f1f]">
+    <div className="min-h-screen bg-[#F0F4F8] text-[#1f1f1f] overflow-x-hidden">
       {/* Top Bar - Light Gemini Style */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
         <div className="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
@@ -135,11 +135,11 @@ export default function Home() {
       <div className="max-w-4xl mx-auto px-4 py-4">
         
         {/* Avatar Card - Compact */}
-        <div className="mb-6 bg-white rounded-2xl p-4 border border-gray-200 shadow-sm relative">
+        <div className="mb-6 bg-white rounded-2xl p-4 border border-gray-200 shadow-sm relative overflow-hidden">
           <QRCode />
-          <div className="grid md:grid-cols-3 gap-6 items-end">
-            <div className="md:col-span-1">
-              <div className="aspect-[2/3] rounded-xl overflow-hidden">
+          <div className="grid md:grid-cols-3 gap-6 items-end min-w-0">
+            <div className="md:col-span-1 flex justify-center">
+              <div className="aspect-[2/3] rounded-xl overflow-hidden w-40 sm:w-56 md:w-full">
                 <Avatar
                   isSpeaking={isLoading}
                   videoToPlay={currentVideo}
@@ -151,7 +151,7 @@ export default function Home() {
                 />
               </div>
             </div>
-            <div className="md:col-span-2 flex flex-col h-full">
+            <div className="md:col-span-2 flex flex-col h-full min-w-0">
               <div className="flex-1 flex flex-col justify-center space-y-4">
                 <div className="text-center">
                   <h2 className="text-2xl font-semibold text-gray-900">Miguel Lacanienta</h2>
