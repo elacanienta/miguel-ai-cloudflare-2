@@ -6,7 +6,7 @@ import QRCode from './components/QRCode';
 import ModelSelector from './components/ModelSelector';
 import DeploymentSelector from './components/DeploymentSelector';
 import ReactMarkdown from 'react-markdown';
-import { getVideoPath } from '@/lib/assets';
+import { getVideoPath, ASSET_CONFIG } from '@/lib/assets';
 
 export default function Home() {
   const [messages, setMessages] = useState([]);
@@ -137,7 +137,7 @@ export default function Home() {
         {/* Avatar Card - Compact */}
         <div className="mb-6 bg-white rounded-2xl p-4 border border-gray-200 shadow-sm relative">
           <QRCode />
-          <div className="grid md:grid-cols-3 gap-6 items-center">
+          <div className="grid md:grid-cols-3 gap-6 items-end">
             <div className="md:col-span-1">
               <div className="aspect-[2/3] rounded-xl overflow-hidden">
                 <Avatar
@@ -151,35 +151,178 @@ export default function Home() {
                 />
               </div>
             </div>
-            <div className="md:col-span-2 space-y-3">
-              <h2 className="text-2xl font-semibold text-gray-900">Miguel Lacanienta</h2>
-              <p className="text-gray-600">BS Computer Science • AI Specialization • Mapúa University</p>
-              <div className="flex flex-wrap gap-2">
-                <button
-                  onClick={() => playVideo('objective')}
-                  className="px-4 py-2 rounded-full bg-blue-50 text-blue-700 text-sm font-medium border border-blue-200 hover:bg-blue-100 hover:border-blue-300 transition-all duration-200 cursor-pointer">
-                  Objective
-                </button>
-                <button
-                  onClick={() => playVideo('skills')}
-                  className="px-4 py-2 rounded-full bg-purple-50 text-purple-700 text-sm font-medium border border-purple-200 hover:bg-purple-100 hover:border-purple-300 transition-all duration-200 cursor-pointer">
-                  Skills
-                </button>
-                <button
-                  onClick={() => playVideo('certs')}
-                  className="px-4 py-2 rounded-full bg-green-50 text-green-700 text-sm font-medium border border-green-200 hover:bg-green-100 hover:border-green-300 transition-all duration-200 cursor-pointer">
-                  Certifications
-                </button>
-                <button
-                  onClick={() => playVideo('applied')}
-                  className="px-4 py-2 rounded-full bg-orange-50 text-orange-700 text-sm font-medium border border-orange-200 hover:bg-orange-100 hover:border-orange-300 transition-all duration-200 cursor-pointer">
-                  Applied Skills
-                </button>
-                <button
-                  onClick={() => playVideo('projects')}
-                  className="px-4 py-2 rounded-full bg-pink-50 text-pink-700 text-sm font-medium border border-pink-200 hover:bg-pink-100 hover:border-pink-300 transition-all duration-200 cursor-pointer">
-                  Projects
-                </button>
+            <div className="md:col-span-2 flex flex-col h-full">
+              <div className="flex-1 flex flex-col justify-center space-y-4">
+                <div className="text-center">
+                  <h2 className="text-2xl font-semibold text-gray-900">Miguel Lacanienta</h2>
+                  <p className="text-gray-600 mt-1">BS Computer Science • AI Specialization • Mapúa University</p>
+                </div>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  <button
+                    onClick={() => playVideo('objective')}
+                    className="px-4 py-2 rounded-full bg-blue-50 text-blue-700 text-sm font-medium border border-blue-200 hover:bg-blue-100 hover:border-blue-300 transition-all duration-200 cursor-pointer">
+                    Objective
+                  </button>
+                  <button
+                    onClick={() => playVideo('skills')}
+                    className="px-4 py-2 rounded-full bg-purple-50 text-purple-700 text-sm font-medium border border-purple-200 hover:bg-purple-100 hover:border-purple-300 transition-all duration-200 cursor-pointer">
+                    Skills
+                  </button>
+                  <button
+                    onClick={() => playVideo('certs')}
+                    className="px-4 py-2 rounded-full bg-green-50 text-green-700 text-sm font-medium border border-green-200 hover:bg-green-100 hover:border-green-300 transition-all duration-200 cursor-pointer">
+                    Certifications
+                  </button>
+                  <button
+                    onClick={() => playVideo('applied')}
+                    className="px-4 py-2 rounded-full bg-orange-50 text-orange-700 text-sm font-medium border border-orange-200 hover:bg-orange-100 hover:border-orange-300 transition-all duration-200 cursor-pointer">
+                    Applied Skills
+                  </button>
+                  <button
+                    onClick={() => playVideo('projects')}
+                    className="px-4 py-2 rounded-full bg-pink-50 text-pink-700 text-sm font-medium border border-pink-200 hover:bg-pink-100 hover:border-pink-300 transition-all duration-200 cursor-pointer">
+                    Projects
+                  </button>
+                </div>
+              </div>
+
+              {/* Powered By Ticker */}
+              <div className="bg-gray-800 rounded-lg overflow-hidden mt-4">
+                <div className="py-2 px-3">
+                  <div className="flex items-center justify-start gap-2 mb-1">
+                    <span className="text-white text-xs font-semibold">Powered by:</span>
+                  </div>
+                  <div className="relative overflow-hidden">
+                    <div className="flex animate-scroll">
+                      {/* First complete set */}
+                      <div className="flex items-center gap-3 flex-shrink-0 pr-3">
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/chatgpt_icon.png`} alt="ChatGPT" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">ChatGPT</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/claude_icon.png`} alt="Claude" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">Claude</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/llama_icon.png`} alt="Llama 3.3" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">Llama 3.3</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/gemma_icon.png`} alt="Gemma 3" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">Gemma 3</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/mistral_icon.png`} alt="Mistral Large" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">Mistral Large</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/elevenlabs_icon.png`} alt="ElevenLabs" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">ElevenLabs</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/sora_icon.png`} alt="Sora 2" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">Sora 2</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/capcut_icon.png`} alt="CapCut" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">CapCut</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/pippit_icon.png`} alt="Pippit" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">Pippit</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/github_icon.png`} alt="GitHub" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">GitHub</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/vercel_icon.png`} alt="Vercel" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">Vercel</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/netlify_icon.png`} alt="Netlify" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">Netlify</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/render_icon.png`} alt="Render" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">Render</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/cloudflare_icon.png`} alt="Cloudflare" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">Cloudflare</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/kiro_icon.png`} alt="Kiro" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">Kiro</span>
+                        </div>
+                      </div>
+                      {/* Duplicate set for seamless loop */}
+                      <div className="flex items-center gap-3 flex-shrink-0 pr-3">
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/chatgpt_icon.png`} alt="ChatGPT" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">ChatGPT</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/claude_icon.png`} alt="Claude" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">Claude</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/llama_icon.png`} alt="Llama 3.3" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">Llama 3.3</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/gemma_icon.png`} alt="Gemma 3" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">Gemma 3</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/mistral_icon.png`} alt="Mistral Large" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">Mistral Large</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/elevenlabs_icon.png`} alt="ElevenLabs" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">ElevenLabs</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/sora_icon.png`} alt="Sora 2" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">Sora 2</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/capcut_icon.png`} alt="CapCut" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">CapCut</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/pippit_icon.png`} alt="Pippit" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">Pippit</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/github_icon.png`} alt="GitHub" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">GitHub</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/vercel_icon.png`} alt="Vercel" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">Vercel</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/netlify_icon.png`} alt="Netlify" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">Netlify</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/render_icon.png`} alt="Render" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">Render</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/cloudflare_icon.png`} alt="Cloudflare" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">Cloudflare</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-gray-700 rounded-full min-w-fit">
+                          <img src={`${ASSET_CONFIG.basePath}/kiro_icon.png`} alt="Kiro" className="w-3.5 h-3.5 flex-shrink-0" />
+                          <span className="text-white text-xs font-medium whitespace-nowrap">Kiro</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
